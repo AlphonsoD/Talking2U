@@ -27,7 +27,7 @@ countries = [
 	'West Bank and Gaza', 'Yemen', 'Zambia', 'Zimbabwe', 'US', 'Global'
 ]
 
-# To create list of countries unavailable to be interpreted by bot
+# To create list of countries able to be interpreted by bot
 special_case = []
 n = 0
 for country in countries:
@@ -37,7 +37,6 @@ for country in countries:
 	else:
 		None
 	n = n + 1
-
 
 #function to get country data
 def get_data(country = 'All'):
@@ -162,11 +161,14 @@ def main():
 	country_input = ['']
 	print('\nTalking2U: What country would you like check out? Please choose from the list below!')
 	print('\nTalking2U: If you want to check out the global statistics instead, ask for global!\n')
-	spc = list(special_case)[1:]
-	time.sleep(1)
-	for item in spc:
-		print(item)
+	#https://www.geeksforgeeks.org/python-printing-list-vertically/
+	nice_way = [special_case[0:53],special_case[53:106],special_case[106:157]]
+	for i in range(51): 
+	    for x in nice_way: 
+	        print(x[i], end = '  ||  ') 
+	    print()
 	print(' ')
+	time.sleep(1)
 	while not valid_country:
 		country_input = input(name + ': ').split()
 		country_input = [x.title() for x in country_input]
