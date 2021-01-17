@@ -83,7 +83,7 @@ def stats(data, country, key, province): #this takes the whole country data, tak
 
 
 
-def symptom_check():
+def symptom_check(): #If you can, pls check this to check the formatting <3
 	print("\nTalking2U: Alright, let me fetch my assessment tool!")
 	print("\nTalking2U: ...")
 	print("""\nTalking2U: Here it is! The following questionnaire will help you determine if you require 
@@ -95,7 +95,7 @@ further assessment for COVID-19 per the Government of Canada Self-Assessment Too
 
 	   - severe difficulty breathing
 	   - severe chest pain
-	   - difficulty waking up
+	   - extreme difficulty waking up
 	   - confusion
 	   - loss of consciousness
 
