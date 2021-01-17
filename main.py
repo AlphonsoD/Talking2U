@@ -33,19 +33,14 @@ def num_prov(country):
 
 	return chosen
 
-
-
-
-
-
 # what stat we want function
 def stats(data, user_said, province ='All'): #this takes the whole country data, takes province we considering an d
 	if user_said == "recovered":
-		print(data[province][recovered])
+		print(data[province]["recovered"])
 	elif user_said == 'confirmed':
-		print(data[province][confirmed])
+		print(data[province]["confirmed"])
 	else:
-		print(data[province][deaths])
+		print(data[province]["deaths"])
 
 
 #main function
@@ -57,6 +52,8 @@ def main():
 	print('What would you like to see specifically? Choose either "recovered", "confirmed", or "deaths".')
 	user_said = input('Enter your selection: ')
 	stats(data, user_said, province)
+
+
 
 if __name__=='__main__':
 	main()
