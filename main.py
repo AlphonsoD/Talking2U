@@ -161,6 +161,7 @@ def main():
 	country_input = ['']
 	print('\nTalking2U: What country would you like check out? Please choose from the list below!')
 	print('\nTalking2U: If you want to check out the global statistics instead, ask for global!\n')
+	time.sleep(3)
 	#https://www.geeksforgeeks.org/python-printing-list-vertically/
 	nice_way = [special_case[0:53],special_case[53:106],special_case[106:157]]
 	for i in range(51): 
