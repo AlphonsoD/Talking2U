@@ -194,14 +194,21 @@ def main():
 
 	stats(data, country, key, province) #changed user_said to key to accommodate less case-sensitivity (see above)
 
+def get_name():
+	name = input('Please enter your name: ')
+	name = name.title()
+	print('\nTalking2U: Hello, ' + name + '!')
+	return name
+
 
 
 if __name__=='__main__':
 	print('===================================== Talking2U Chat Bot =====================================')
 	print()
-	name = input('Please enter your name: ')
-	name = name.title()
-	print('\nTalking2U: Hello, ' + name + '!')
+	#name = input('Please enter your name: ')
+	#name = name.title()
+	#print('\nTalking2U: Hello, ' + name + '!')
+	name = get_name()
 	alpha = True
 	while alpha:
 		print('\nTalking2U: Would you like to see COVID-19 country statistics or check your COVID-19 symptoms?\n')
