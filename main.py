@@ -87,7 +87,7 @@ def stats(data, country, key, province): #this takes the whole country data, tak
 	elif key == 'CONFIRMED':
 		print(f'''\nTalking2U: As of the recent statistics, there are currently {data[province]["confirmed"]} confirmed COVID-19 cases.''')
 	else:
-		print(f'''\nTalking2U: As of the recent statistics, have been {data[province]["deaths"]} mortalities.''')
+		print(f'''\nTalking2U: As of the recent statistics, there have been {data[province]["deaths"]} mortalities.''')
 	print(f'''\nTalking2U: Remember to wear a mask, socially distance, and follow your local COVID-19 
 	   guidelines and legislations! Stay safe and healthy {name}!''')
 
@@ -161,7 +161,7 @@ def main():
 	country_input = ['']
 	print('\nTalking2U: What country would you like check out? Please choose from the list below!')
 	print('\nTalking2U: If you want to check out the global statistics instead, ask for global!\n')
-	time.sleep(3)
+	time.sleep(2)
 	#https://www.geeksforgeeks.org/python-printing-list-vertically/
 	nice_way = [special_case[0:53],special_case[53:106],special_case[106:157]]
 	for i in range(51): 
