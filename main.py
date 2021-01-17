@@ -43,15 +43,15 @@ def num_prov(country):
 	amount = len(list(COVID_Call))
 
 	if amount > 1:
-		ask = str(input("Would you like to see the statistics for a specific location or demographic?: "))
+		print("\nTalking2U: Would you like to see the statistics for a specific location or demographic? Please say yes or no\n")
+		ask = str(input(name + ": "))
 		if ask.upper() == "YES":
-			print("\n")
-			print("Below is a list of locations or demographics to choose from: \n")
+			print("\nTalking2U: Please choose one of the locations or demographics below! \n")
 			var = list(COVID_Call)[1:]
 			for item in var:
 				print(item)
 			print('\n')
-			chosen = input("Please choose a location or demographic: ")
+			chosen = str(input(name + ": "))
 		else:
 			chosen = 'All'
 	else:
@@ -61,33 +61,77 @@ def num_prov(country):
 
 
 # what stat we want function
-def stats(data, user_said, province ='All'): #this takes the whole country data, takes province we considering an d
-	if user_said == "recovered":
-		print(data[province]["recovered"])
-	elif user_said == 'confirmed':
-		print(data[province]["confirmed"])
+def stats(data, country, key, province): #this takes the whole country data, takes province we considering an d
+	if key == "ALL":
+		if province == 'All':
+			print("\n")
+			print(f'''Talking2U: In {country} there are currently {data[province]["confirmed"]} cases, {data[province]["recovered"]} cases have recovered, 
+	           and there have been {data[province]["deaths"]} mortalities.''')
+		else:
+			print("\n")
+			print(f'''Talking2U: In {province} there are currently {data[province]["confirmed"]} cases, {data[province]["recovered"]} cases have recovered, 
+	   and there have been {data[province]["deaths"]} mortalities.''')
+	elif key == "RECOVERED":
+		print(f'''\nTalking2U: Of the {data[province]["confirmed"]} confirmed cases, there are currently {data[province]["recovered"]} recovered cases!''')
+	elif key == 'CONFIRMED':
+		print(f'''\nTalking2U: As of the recent statistics, there are currently {data[province]["confirmed"]} confirmed COVID-19 cases.''')
 	else:
-		print(data[province]["deaths"])
+		print(f'''Talking2U: As of the recent statistics, have been {data[province]["deaths"]} mortalities.''')
+	print(f'''\nTalking2U: Remember to wear a mask, socially distance, and follow your local COVID-19 
+	   guidelines and legislations! Stay safe and healthy {name}!''')
+
 
 
 
 def symptom_check():
-	print("Talking2U: Note this checker is not a replacement for a COVID test! If you are experiencing a life-threatening emergency, call 911 NOW. Otherwise, please answer the following questions.")
-	monitor =[]
-	print('Talking2U: What is your age?')
-	age = input(name + ': ')
-	print('Talking2U: What is your gender? Male, Female or Other?')
-	gender = input(name + ': ')
-	print('Talking2U: Are you experiencing any of the following symptoms: new or worsening seizures, extreme difficulty breathing, bluish lips or face?')
-	symptoms = input(name + ': ')
-	monitor.append(symptoms)
-	print('Talking2U: Are you experiencing: dehydration, difficulty speaking, or disorientation (confusion)?')
-	symptoms = input(name + ': ')
-	monitor.append(symptoms)
-	if 'yes' or 'YES' in monitor:
-		print("Talking2U: You need urgent medical help - please call 911")
+	print("\nTalking2U: Alright, let me fetch my assessment tool!")
+	print("\nTalking2U: ...")
+	print("""\nTalking2U: Here it is! The following questionnaire will help you determine if you require 
+further assessment for COVID-19 per the Government of Canada Self-Assessment Tool""")
+	print("""\nTalking2U: Please note this checker is not a replacement for a COVID test!
+	If you are experiencing a life-threatening emergency, call 911 NOW. 
+	Otherwise, please answer the following questions.""")
+	print("""\nTalking2U: Are you experiencing any of the following symptoms:
+
+	   - severe difficulty breathing
+	   - severe chest pain
+	   - difficulty waking up
+	   - confusion
+	   - loss of consciousness
+
+	   Please answer yes or no\n""")
+	symptoms = str(input(name + ': ')).upper()
+	symp_list = symptoms.split(" ")
+	if 'YES' in symp_list:
+		print("""\nTalking2U: You need urgent medical help - please call 911 or go to
+           your nearest emergency department. These symptoms require immediate attention, 
+           according to the Government of Canada Self-Assessment Tool""")
 	else:
-		print("You have no need to worry!")
+		print("""\nTalking2U: Are you experiencing any of the following symptoms?
+	   - a new or worsening cough
+	   - headache
+	   - new loss of smell or taste
+	   - shortness of breath or difficulty breathing
+	   - feeling very unwell
+	   - chills
+	   - fatigue or weakness
+	   - muscle or body aches
+	   - gastrointestinal symptoms (i.e. abdominal pain, vomiting, diarrhea)
+	   - temperature equal to or over 38°C
+	   - feeling feverish
+
+	   Please answer yes or no\n""")
+		symptoms = str(input(name + ': ')).upper()
+		symp_list = symptoms.split()
+		if 'YES' in symp_list:
+			print("""\nTalking2U: Please self-isolate. The Public Health Agency of Canada asks
+	   anyone with the above symptoms to please self-isolate as a precaution""")
+			print("\nTalking2U: ...")
+			print("""\nTalking2U: To determine your next steps, please utilize the COVID-19 Self-Assessment tool on
+	   the Government of Canada website.""")
+		else:
+			print(f'''\nTalking2U: You have no need to worry! Remember to wear a mask, socially distance,
+         and follow your local COVID-19 guidelines and legislations! Stay safe and healthy {name}!''')
 
 
 
@@ -96,7 +140,7 @@ def main():
 	#check if valid country
 	valid_country = False
 	country_input = ['']
-	print('Talking2U: What country would you like check out?')
+	print('\nTalking2U: What country would you like check out?\n')
 	while not valid_country:
 		country_input = input(name + ': ').split()
 		us_variation = ['US', 'Us', 'uS','us']
@@ -106,7 +150,7 @@ def main():
 		#country_input = [x.upper() for x in country_input]
 		valid_country = any(item in country_input for item in countries)
 		if not valid_country:
-			print('Talking2U: Please enter a valid country.')
+			print('\nTalking2U: Please enter a valid country.\n')
 
 	for item in countries:
 		if item in country_input:
@@ -117,9 +161,38 @@ def main():
 
 	data = get_data(country)
 	province = num_prov(country)
-	print('What would you like to see specifically? Choose either "recovered", "confirmed", or "deaths".')
-	user_said = input('Enter your selection: ')
-	stats(data, user_said, province)
+
+	print('\nTalking2U: What would you like to see specifically? The number of confirmed or recovered cases, deaths, or all of the statistics?\n')
+	user_said = str(input(name + ': ')).lower()
+
+	beta = True #for loop to allow for less case-sensitivity
+	said = list(user_said.split(" "))
+	all_words = ['all', 'everything']
+	recovered_words = ['recovered','survived','survivors']
+	confirmed_words = ['confirmed']
+	death_words = ['deaths','mortalities','fatalities','died','dead']
+	while beta:
+		for wurd in said:
+			if wurd in all_words:
+				key = 'ALL'
+				beta = False
+				break
+			elif wurd in recovered_words:
+				key = 'RECOVERED'
+				beta = False
+				break
+			elif wurd in confirmed_words:
+				key = 'CONFIRMED'
+				beta = False
+				break
+			elif wurd in death_words:
+				key = 'DEATHS'
+				beta = False
+				break
+		else:
+			print("Talking2U: I apologize but I don't think I quite understood that. Please say that again")
+
+	stats(data, country, key, province) #changed user_said to key to accommodate less case-sensitivity (see above)
 
 
 
@@ -128,11 +201,11 @@ if __name__=='__main__':
 	print()
 	name = input('Please enter your name: ')
 	name = name.title()
-	print('Talking2U: Hello, ' + name + '!')
+	print('\nTalking2U: Hello, ' + name + '!')
 	alpha = True
 	while alpha:
-		print('Talking2U: Would you like to see COVID-19 country statistics or check your COVID-19 symptoms?')
-		enter = input(name + ': ')
+		print('\nTalking2U: Would you like to see COVID-19 country statistics or check your COVID-19 symptoms?\n')
+		enter = str(input(name + ': ')).lower()
 		words = list(enter.split(" "))
 		keywords = ['stats','statistics', 'country', 'stat']
 		symptom_words = ['symptoms', 'signs', 'symptom', "indicator"]
@@ -140,9 +213,10 @@ if __name__=='__main__':
 			if word in keywords:
 				main()
 				alpha = False
+				break
 			elif word in symptom_words:
 				symptom_check()
 				alpha = False
-			else:
-				print("Hmm...I didn't quite get that.")
-			
+				break
+		else:
+			print("\nTalking2U: Hmm...I didn't quite get that.")
