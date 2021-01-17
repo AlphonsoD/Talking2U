@@ -47,6 +47,9 @@ def stats(data, user_said, province ='All'): #this takes the whole country data,
 def main():
 	print('Hello! I am Talking2U, a chat bot desgined to give statstics about COVID-19 from around the world.')
 	country = input('What country would you like check out? Please enter a country: ').strip().title()
+	#special US case
+	if country == 'Us':
+		country = 'US'
 	data = get_data(country)
 	province = num_prov(country)
 	print('What would you like to see specifically? Choose either "recovered", "confirmed", or "deaths".')
