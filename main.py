@@ -56,6 +56,9 @@ def symptom_check():
 	if 'yes' or 'YES' in monitor:
 		print("You need urgent medical help - please call 911")
 
+	else:
+		print("You have no need to worry!")
+
 
 
 #main function
@@ -72,7 +75,6 @@ def main():
 	stats(data, user_said, province)
 
 
-def symptoms():
 
 
 
@@ -81,4 +83,4 @@ if __name__=='__main__':
 	if enter == 'COVID country statisitics':
 		main()
 	else:
-		symptoms()
+		symptom_check()
