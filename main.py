@@ -143,11 +143,11 @@ def main():
 	print('\nTalking2U: What country would you like check out?\n')
 	while not valid_country:
 		country_input = input(name + ': ').split()
+		country_input = [x.title() for x in country_input]
 		us_variation = ['US', 'Us', 'uS','us']
 		for i in us_variation:
 			if i in country_input:
 				country_input = ['US']
-		#country_input = [x.upper() for x in country_input]
 		valid_country = any(item in country_input for item in countries)
 		if not valid_country:
 			print('\nTalking2U: Please enter a valid country.\n')
