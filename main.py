@@ -43,6 +43,21 @@ def stats(data, user_said, province ='All'): #this takes the whole country data,
 		print(data[province]["deaths"])
 
 
+
+def symptom_check():
+	print("Note this checker is not a replacement for a COVID test! If you are experiencing a life-threatening emergency, call 911 NOW. Otherwise, please answer the following questions.")
+	monitor =[]
+	age = input("What is your age?")
+	gender = input("What is your gender? Male, Female or Other")
+	symptoms = input("Are you experiencing any of the following symptoms: new or worsening seizures, extreme difficulty breathing, bluish lips or face?")
+	monitor.append(symptoms)
+	symptoms = input("Are you experiencing: dehydration, difficulty speaking, or disorientation (confusion)?")
+	monitor.append(symptoms)
+	if 'yes' or 'YES' in monitor:
+		print("You need urgent medical help - please call 911")
+
+
+
 #main function
 def main():
 	print('Hello! I am Talking2U, a chat bot desgined to give statstics about COVID-19 from around the world.')
@@ -57,6 +72,13 @@ def main():
 	stats(data, user_said, province)
 
 
+def symptoms():
+
+
 
 if __name__=='__main__':
-	main()
+	enter = input("Would you like COVID country statisitics or check your COVID symptoms?")
+	if enter == 'COVID country statisitics':
+		main()
+	else:
+		symptoms()
