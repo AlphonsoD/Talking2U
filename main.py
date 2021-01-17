@@ -26,7 +26,7 @@ def num_prov(country):
 				print(item)
 			print('\n')
 			chosen = input("Please choose a location or demographic: ")
-		else
+		else:
 			chosen = 'All'
 	else:
 		chosen = 'All'
