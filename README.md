@@ -6,3 +6,7 @@ If the user asks for statistics, the chat bot can prompt the user for a more spe
 
 If the user asks to check their symptoms, the chat bot will ask what kind of symptoms the user is experiencing using questions from the Government of Canada's COVID-19 self-assessment tool and, based on the user's responses, will suggest appropriate actions to take.
 
+# How to run it
+
+    1. Clone the repository to your computer
+    2. Run main.py
